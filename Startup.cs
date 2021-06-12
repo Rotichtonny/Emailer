@@ -17,8 +17,11 @@ namespace Emailer
                 .UseSqlServerStorage("DefaultConnection");
             app.UseHangfireDashboard();
             // Fire-and-forget jobs are executed only once and almost immediately after creation.
-            BackgroundJob.Enqueue(
-                () => Console.WriteLine("Fire-and-forget!"));
+            //BackgroundJob.Enqueue(() => Console.WriteLine("Fire-and-forget!"));
+
+            // Recurring jobs fire many times on the specified CRON schedule.
+            RecurringJob.AddOrUpdate(
+                () => Console.WriteLine("Recurring!"),Cron.Minutely);
             app.UseHangfireServer();
         }
     }
