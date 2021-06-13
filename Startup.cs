@@ -15,7 +15,7 @@ namespace Emailer
             // Hangfire Configuration
             GlobalConfiguration.Configuration
                 .UseSqlServerStorage("DefaultConnection");
-            app.UseHangfireDashboard();
+            app.UseHangfireDashboard("/myDash");
             // Fire-and-forget jobs are executed only once and almost immediately after creation.
             //BackgroundJob.Enqueue(() => Console.WriteLine("Fire-and-forget!"));
 
